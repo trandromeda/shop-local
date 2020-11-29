@@ -1,13 +1,24 @@
-import { useState } from "react";
+import { FormEvent, useContext, useState } from "react";
+import { ShopStore } from "src/shop-store";
 
 function Search() {
   const [query, setQuery] = useState("");
-  const handleSubmit = () => {};
+  const { shopDispatch } = useContext(ShopStore);
+
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    shopDispatch({
+      type: "update-query",
+      payload: {
+        query,
+      },
+    });
+  };
 
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        3 Name:
+        Name:
         <input
           type="text"
           name="name"

@@ -1,15 +1,18 @@
 import React, { createContext, useReducer } from "react";
 
 type InitialState = {
-  placeholder: string;
+  query: string;
 };
 
 type ShopActions = {
-  type: string;
+  type: "update-query";
+  payload: {
+    query: string;
+  };
 };
 
 const initialState: InitialState = {
-  placeholder: "placeholder",
+  query: "",
 };
 
 interface IShopContext {
@@ -22,6 +25,11 @@ const ShopStoreProvider = ({ children }: any) => {
   const [shopState, shopDispatch] = useReducer(
     (state: InitialState, action: ShopActions) => {
       switch (action.type) {
+        case "update-query":
+          return {
+            ...state,
+            query: action.payload.query,
+          };
         default:
           return state;
       }

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { ShopStore } from "src/shop-store";
 import fire from "../firebase";
 
 import Shop from "./components/shop/Shop";
@@ -24,6 +25,11 @@ interface IShop {
 
 function Shops() {
   const [shops, setShops] = useState<IShop[] | null>([]);
+  const { shopState } = useContext(ShopStore);
+
+  useEffect(() => {
+    console.log(shopState);
+  }, [shopState.query]);
 
   useEffect(() => {
     let shopsRef = db.collection("shops");
