@@ -11,10 +11,20 @@ interface IShops {
 interface IShop {
   id: string;
   name: string;
+  tags: string[];
+  url?: string;
+  instagram?: string;
+  desc?: string;
+  address?: string;
+  neighbourhood?: string;
+  hasDelivery?: boolean;
+  hasPickup?: boolean;
+  hasGiftCards?: boolean;
 }
 
 function Shops() {
   const [shops, setShops] = useState<IShop[] | null>([]);
+
   useEffect(() => {
     let shopsRef = db.collection("shops");
     shopsRef.get().then((querySnapshot) => {
@@ -24,9 +34,20 @@ function Shops() {
         const shopId = doc.id;
         result.push({ ...shopData, id: shopId });
       });
-      setShops(result);
+
+      const shuffledShops = randomizeShops(result);
+      setShops(shuffledShops);
     });
   }, []);
+
+  const randomizeShops = (shops: IShop[]) => {
+    for (let i = shops.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shops[i], shops[j]] = [shops[j], shops[i]];
+    }
+
+    return shops;
+  };
 
   return (
     <div>
