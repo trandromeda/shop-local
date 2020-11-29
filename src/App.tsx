@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react";
+import { ShopStoreProvider } from "./shop-store";
 
-import Shop from "./shops/Shops";
 import "./App.scss";
+import Search from "./search/Search";
+import Shops from "./shops/Shops";
 
 function App() {
   return (
-    <div className="App">
-      <h1>
-        <p>Shop Local!</p>
-      </h1>
-      <Shop />
-    </div>
+    <ShopStoreProvider>
+      <div className="App">
+        <h1>
+          <p>Shop Local Toronto!</p>
+        </h1>
+        <Search />
+        <Shops />
+      </div>
+    </ShopStoreProvider>
   );
 }
 
