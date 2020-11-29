@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import fire from "./firebase";
 import React, { useEffect, useState } from "react";
 
