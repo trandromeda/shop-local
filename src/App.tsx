@@ -1,53 +1,23 @@
-import "./App.css";
-import fire from "./firebase";
 import React, { useEffect, useState } from "react";
+import { ShopStoreProvider } from "./shop-store";
 
-const db = fire.firestore();
-interface IShops {
-  [key: string]: IShop;
-}
-
-interface IShop {
-  id: string;
-  name: string;
-}
+import "./App.scss";
+import Search from "./search/Search";
+import Shops from "./shops/Shops";
 
 function App() {
-  const [shops, setShops] = useState<IShop[] | null>([]);
-
-  useEffect(() => {
-    let shopsRef = db.collection("shops");
-    shopsRef.get().then((querySnapshot) => {
-      const result: IShop[] = [];
-      querySnapshot.forEach((doc) => {
-        const shopData = doc.data() as IShop;
-        const shopId = doc.id;
-        result.push({ ...shopData, id: shopId });
-      });
-      setShops(result);
-    });
-  }, []);
-
-  if (shops) {
-    return (
+  return (
+    <ShopStoreProvider>
       <div className="App">
-        <h1>
-          <p>Shop Local!</p>
-        </h1>
-        {shops.map((shop) => {
-          return <p key={shop.id}>{shop.name}</p>;
-        })}
+        <div className="header">
+          <h1 className="title">Rouge</h1>
+          <h2 className="subtitle">Shop Local Toronto</h2>
+        </div>
+        <Search />
+        <Shops />
       </div>
-    );
-  } else {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <p>Shop Local!</p>
-        </header>
-      </div>
-    );
-  }
+    </ShopStoreProvider>
+  );
 }
 
 export default App;

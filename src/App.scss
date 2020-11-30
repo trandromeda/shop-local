@@ -1,0 +1,42 @@
+@import "~bulma/sass/utilities/_all.sass";
+@import "~bulma/sass/base/_all.sass";
+@import "~bulma/sass/elements/button.sass";
+@import "~bulma/sass/elements/title.sass";
+@import "~bulma/sass/components/card.sass";
+@import "~bulma/sass/form/_all.sass";
+
+.App {
+  text-align: center;
+}
+
+.header {
+  padding: 1em;
+  margin-bottom: 1em;
+  background-color: red;
+  color: white;
+
+  h1.title,
+  .subtitle {
+    color: white;
+  }
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
