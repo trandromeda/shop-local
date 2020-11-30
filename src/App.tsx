@@ -7,6 +7,7 @@ import { ShopStoreProvider } from "./shop-store";
 import "./App.scss";
 import Search from "./search/Search";
 import Shops from "./shops/Shops";
+import Footer from "./footer/Footer";
 
 library.add(fas);
 
@@ -20,6 +21,7 @@ function App() {
         </div>
         <Search />
         <Shops />
+        <Footer />
       </div>
     </ShopStoreProvider>
   );
