@@ -81,6 +81,7 @@ function Shops() {
   return (
     <div>
       <Filter />
+      <p>Click on a business' name to visit their website.</p>
       {shops &&
         shops.map((shop) => {
           return <Shop key={shop.id} shop={shop} />;
