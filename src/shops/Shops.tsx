@@ -68,11 +68,6 @@ function Shops() {
     }
   }, [shopState.query]);
 
-  useEffect(() => {
-    let shopsRef = db.collection("shops");
-    getAllShops();
-  }, []);
-
   const randomizeShops = (shops: IShop[]) => {
     for (let i = shops.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));

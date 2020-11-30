@@ -1,5 +1,6 @@
 import { FormEvent, useContext, useState } from "react";
 import { ShopStore } from "src/shop-store";
+import "./Search.scss";
 
 function Search() {
   const [query, setQuery] = useState("");
@@ -17,16 +18,14 @@ function Search() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        Name:
-        <input
-          type="text"
-          name="name"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        ></input>
-        <input type="submit" value="OK"></input>
-      </label>
+      <label>Search by keyword:</label>
+      <input
+        type="text"
+        name="name"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      ></input>
+      <input type="submit" value="Go"></input>
     </form>
   );
 }
