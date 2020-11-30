@@ -1,48 +1,70 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconName } from "@fortawesome/fontawesome-svg-core";
 import "./Filter.scss";
+
+import { ShopStore } from "src/shop-store";
 
 const tabs = [
   {
     label: "Art",
     icon: "palette",
+    query: "art",
   },
   {
     label: "Plants",
     icon: "seedling",
+    query: "plants",
   },
   {
     label: "Clothing",
     icon: "tshirt",
+    query: "clothing",
   },
   {
     label: "Jewellery",
     icon: "gem",
+    query: "jewellery",
   },
   {
     label: "Gifts",
     icon: "gift",
+    query: "gifts",
   },
   {
     label: "Food",
     icon: "ice-cream",
+    query: "food",
   },
 ];
 
 interface ITab {
   label: string;
   icon: string;
+  query: string;
 }
 
 function Filter() {
   const [activeTab, setActiveTab] = useState("");
+  const { shopDispatch } = useContext(ShopStore);
 
-  const handleSetActiveTab = (tab: string) => {
-    if (activeTab === tab) {
+  const handleSetActiveTab = (tab: ITab) => {
+    if (activeTab === tab.label) {
       setActiveTab("");
+      shopDispatch({
+        type: "update-query",
+        payload: {
+          query: "",
+        },
+      });
     } else {
-      setActiveTab(tab);
+      setActiveTab(tab.label);
+      shopDispatch({
+        type: "update-query",
+        payload: {
+          query: tab.query,
+        },
+      });
     }
   };
 
@@ -54,7 +76,7 @@ function Filter() {
             <li
               key={tab.label}
               className={activeTab === tab.label ? "is-active" : ""}
-              onClick={() => handleSetActiveTab(tab.label)}
+              onClick={() => handleSetActiveTab(tab)}
             >
               <a>
                 <span className="icon is-small">
