@@ -5,6 +5,8 @@ import fire from "../firebase";
 import Shop from "./components/shop/Shop";
 import Filter from "./components/filter/Filter";
 
+import "./Shops.scss";
+
 const db = fire.firestore();
 interface IShops {
   [key: string]: IShop;
@@ -25,7 +27,7 @@ interface IShop {
 }
 
 function Shops() {
-  const [shops, setShops] = useState<IShop[] | null>([]);
+  const [shops, setShops] = useState<IShop[] | null>(null);
   const { shopState } = useContext(ShopStore);
 
   const getAllShops = () => {
@@ -82,6 +84,7 @@ function Shops() {
     <div>
       <Filter />
       <p>Click on a business' name to visit their website.</p>
+      {!shops && <div className="loading">Loading...</div>}
       {shops &&
         shops.map((shop) => {
           return <Shop key={shop.id} shop={shop} />;

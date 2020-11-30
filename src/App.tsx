@@ -12,6 +12,7 @@ import Shops from "./shops/Shops";
 import Footer from "./footer/Footer";
 import About from "./about/About";
 import Navbar from "./navbar/Navbar";
+import Contribute from "./contribute/Contribute";
 
 library.add(fas);
 
@@ -25,6 +26,9 @@ function App() {
           <Switch>
             <Route path="/about">
               <About />
+            </Route>
+            <Route path="/contribute">
+              <Contribute />
             </Route>
             <Route path="/">
               <Search />

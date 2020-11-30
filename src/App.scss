@@ -2,6 +2,7 @@ $turquoise: #34b1c1;
 $red: #c14434;
 $tabs-toggle-link-active-background-color: $turquoise;
 $tabs-toggle-link-active-border-color: $turquoise;
+$navbar-burger-color: #fff;
 
 @import "~bulma/sass/utilities/_all.sass";
 @import "~bulma/sass/base/_all.sass";
@@ -14,6 +15,7 @@ $tabs-toggle-link-active-border-color: $turquoise;
 
 @import "~bulma/sass/components/card.sass";
 @import "~bulma/sass/components/tabs.sass";
+@import "~bulma/sass/components/navbar.sass";
 
 .App {
   text-align: center;
