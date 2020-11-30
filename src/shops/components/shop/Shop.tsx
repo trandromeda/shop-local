@@ -60,17 +60,15 @@ function Shop(props: Props) {
       <footer className="card-footer shop__metadata">
         {props.shop.hasDelivery && (
           <p className="card-footer-item">
-            Delivery: Yes
             {props.shop.hasDelivery === "local" && (
-              <span className="metadata__local"> (local only)</span>
-            )}
+              <span className="metadata__local">Local</span>
+            )}{" "}
+            Delivery
           </p>
         )}
-        {props.shop.hasPickup && (
-          <p className="card-footer-item">Pickup: Yes</p>
-        )}
+        {props.shop.hasPickup && <p className="card-footer-item">Pickup</p>}
         {props.shop.hasGiftCards && (
-          <p className="card-footer-item">Gift cards: Yes</p>
+          <p className="card-footer-item">Gift cards</p>
         )}
       </footer>
     </div>
