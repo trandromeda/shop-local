@@ -1,3 +1,8 @@
+$turquoise: #34b1c1;
+$red: #c14434;
+$tabs-toggle-link-active-background-color: $turquoise;
+$tabs-toggle-link-active-border-color: $turquoise;
+
 @import "~bulma/sass/utilities/_all.sass";
 @import "~bulma/sass/base/_all.sass";
 @import "~bulma/sass/form/_all.sass";
@@ -16,7 +21,7 @@
 .header {
   padding: 1em;
   margin-bottom: 1em;
-  background-color: red;
+  background-color: $red;
   color: white;
 
   h1.title,
