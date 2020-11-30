@@ -9,9 +9,10 @@ function App() {
   return (
     <ShopStoreProvider>
       <div className="App">
-        <h1>
-          <p>Shop Local Toronto!</p>
-        </h1>
+        <div className="header">
+          <h1 className="title">Rouge</h1>
+          <h2 className="subtitle">Shop Local Toronto</h2>
+        </div>
         <Search />
         <Shops />
       </div>

@@ -27,7 +27,7 @@ function Shop(props: Props) {
 
   return (
     <div className="shop" onClick={handleSelectShop}>
-      <h3>{props.shop.name}</h3>
+      <h3 className="title is-3">{props.shop.name}</h3>
       <p>{props.shop.desc}</p>
     </div>
   );

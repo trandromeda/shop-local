@@ -18,14 +18,21 @@ function Search() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>Search by keyword:</label>
-      <input
-        type="text"
-        name="name"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      ></input>
-      <input type="submit" value="Go"></input>
+      <div className="field has-addons">
+        <div className="control is-expanded">
+          <input
+            className="input"
+            type="text"
+            name="query"
+            value={query}
+            placeholder="Search by keyword"
+            onChange={(e) => setQuery(e.target.value)}
+          ></input>
+        </div>
+        <div className="control">
+          <input className="button is-info" type="submit" value="Go" />
+        </div>
+      </div>
     </form>
   );
 }
