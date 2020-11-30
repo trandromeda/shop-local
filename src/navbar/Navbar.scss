@@ -1,0 +1,20 @@
+$red: #c14434;
+
+nav.navbar {
+  margin-bottom: 1em;
+  background-color: $red;
+  border-bottom: 3px solid $red;
+}
+
+.brand__logo {
+  padding: 0.5em 1em;
+}
+
+.title a,
+.subtitle {
+  color: #fff;
+}
+
+.navbar-burger {
+  // color: #fff;
+}

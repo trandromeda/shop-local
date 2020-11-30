@@ -1,4 +1,6 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 
@@ -7,21 +9,40 @@ import { ShopStoreProvider } from "./shop-store";
 import "./App.scss";
 import Search from "./search/Search";
 import Shops from "./shops/Shops";
+import Footer from "./footer/Footer";
+import About from "./about/About";
+import Navbar from "./navbar/Navbar";
+import Contribute from "./contribute/Contribute";
+import Contact from "./contact/Contact";
 
 library.add(fas);
 
 function App() {
   return (
-    <ShopStoreProvider>
-      <div className="App">
-        <div className="header">
-          <h1 className="title">Rouge</h1>
-          <h2 className="subtitle">Shop Local Toronto</h2>
+    <Router>
+      <ShopStoreProvider>
+        <div className="App">
+          <Navbar />
+
+          <Switch>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/contribute">
+              <Contribute />
+            </Route>
+            <Route path="/contact">
+              <Contact />
+            </Route>
+            <Route path="/">
+              <Search />
+              <Shops />
+            </Route>
+          </Switch>
+          <Footer />
         </div>
-        <Search />
-        <Shops />
-      </div>
-    </ShopStoreProvider>
+      </ShopStoreProvider>
+    </Router>
   );
 }
 
