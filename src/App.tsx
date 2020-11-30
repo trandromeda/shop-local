@@ -13,6 +13,7 @@ import Footer from "./footer/Footer";
 import About from "./about/About";
 import Navbar from "./navbar/Navbar";
 import Contribute from "./contribute/Contribute";
+import Contact from "./contact/Contact";
 
 library.add(fas);
 
@@ -29,6 +30,9 @@ function App() {
             </Route>
             <Route path="/contribute">
               <Contribute />
+            </Route>
+            <Route path="/contact">
+              <Contact />
             </Route>
             <Route path="/">
               <Search />
