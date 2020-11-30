@@ -1,4 +1,9 @@
+// @ts-ignore
+import { ReactTypeformEmbed } from "react-typeform-embed";
+
 function Contribute() {
-  return <div>Contribute</div>;
+  return (
+    <ReactTypeformEmbed url="https://transienttran.typeform.com/to/VNIiDysN?" />
+  );
 }
 export default Contribute;
