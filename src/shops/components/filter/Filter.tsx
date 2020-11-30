@@ -19,7 +19,7 @@ const tabs = [
   {
     label: "Clothing",
     icon: "tshirt",
-    query: "clothing",
+    query: "fashion",
   },
   {
     label: "Jewellery",
@@ -35,6 +35,16 @@ const tabs = [
     label: "Food",
     icon: "ice-cream",
     query: "food",
+  },
+  {
+    label: "Stationary",
+    icon: "pen-fancy",
+    query: "stationary",
+  },
+  {
+    label: "Home",
+    icon: "chair",
+    query: "home",
   },
 ];
 
