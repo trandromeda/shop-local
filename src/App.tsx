@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+
 import { ShopStoreProvider } from "./shop-store";
 
 import "./App.scss";
 import Search from "./search/Search";
 import Shops from "./shops/Shops";
+
+library.add(fas);
 
 function App() {
   return (

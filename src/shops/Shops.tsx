@@ -3,6 +3,7 @@ import { ShopStore } from "src/shop-store";
 import fire from "../firebase";
 
 import Shop from "./components/shop/Shop";
+import Filter from "./components/filter/Filter";
 
 const db = fire.firestore();
 interface IShops {
@@ -79,6 +80,7 @@ function Shops() {
 
   return (
     <div>
+      <Filter />
       {shops &&
         shops.map((shop) => {
           return <Shop key={shop.id} shop={shop} />;

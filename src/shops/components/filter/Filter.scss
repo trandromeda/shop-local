@@ -1,0 +1,15 @@
+.tabs {
+  margin-top: 1em;
+}
+
+@media only screen and (max-width: 850px) {
+  .tabs ul {
+    padding: 0.25em;
+    flex-wrap: wrap;
+    flex-shrink: initial;
+
+    li {
+      margin-top: -1px;
+    }
+  }
+}

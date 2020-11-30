@@ -30,7 +30,7 @@ function Search() {
           ></input>
         </div>
         <div className="control">
-          <input className="button is-info" type="submit" value="Go" />
+          <input className="button is-primary" type="submit" value="Go" />
         </div>
       </div>
     </form>
