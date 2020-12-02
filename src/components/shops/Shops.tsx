@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ShopStore } from "src/shop-store";
-import fire from "../firebase";
+import fire from "src/firebase";
 
 import Shop from "./components/shop/Shop";
 import Filter from "./components/filter/Filter";
@@ -8,10 +8,6 @@ import Filter from "./components/filter/Filter";
 import "./Shops.scss";
 
 const db = fire.firestore();
-interface IShops {
-  [key: string]: IShop;
-}
-
 interface IShop {
   id: string;
   name: string;
@@ -30,27 +26,10 @@ function Shops() {
   const [shops, setShops] = useState<IShop[] | null>(null);
   const { shopState } = useContext(ShopStore);
 
-  const getAllShops = () => {
-    let shopsRef = db.collection("shops");
-    shopsRef.get().then((querySnapshot) => {
-      const result: IShop[] = [];
-      querySnapshot.forEach((doc) => {
-        const shopData = doc.data() as IShop;
-        const shopId = doc.id;
-        result.push({ ...shopData, id: shopId });
-      });
-
-      const shuffledShops = randomizeShops(result);
-      setShops(shuffledShops);
-    });
-  };
-
-  const getShopsByQuery = (query: string) => {
-    let shopsRef = db.collection("shops");
-    shopsRef
-      .where("tags", "array-contains", query)
-      .get()
-      .then((querySnapshot) => {
+  useEffect(() => {
+    const getAllShops = () => {
+      let shopsRef = db.collection("shops");
+      shopsRef.get().then((querySnapshot) => {
         const result: IShop[] = [];
         querySnapshot.forEach((doc) => {
           const shopData = doc.data() as IShop;
@@ -61,9 +40,26 @@ function Shops() {
         const shuffledShops = randomizeShops(result);
         setShops(shuffledShops);
       });
-  };
+    };
 
-  useEffect(() => {
+    const getShopsByQuery = (query: string) => {
+      let shopsRef = db.collection("shops");
+      shopsRef
+        .where("tags", "array-contains", query)
+        .get()
+        .then((querySnapshot) => {
+          const result: IShop[] = [];
+          querySnapshot.forEach((doc) => {
+            const shopData = doc.data() as IShop;
+            const shopId = doc.id;
+            result.push({ ...shopData, id: shopId });
+          });
+
+          const shuffledShops = randomizeShops(result);
+          setShops(shuffledShops);
+        });
+    };
+
     if (shopState.query) {
       getShopsByQuery(shopState.query);
     } else {
