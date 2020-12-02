@@ -1,6 +1,6 @@
 import "./About.scss";
 
-function About() {
+export function About() {
   return (
     <div className="content">
       <p>
@@ -23,5 +23,3 @@ function About() {
     </div>
   );
 }
-
-export default About;

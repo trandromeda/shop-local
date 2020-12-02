@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { ShopStore } from "src/shop-store";
 import fire from "src/firebase";
 
@@ -22,14 +22,16 @@ interface IShop {
   hasGiftCards?: boolean;
 }
 
-function Shops() {
+export function Shops() {
   const [shops, setShops] = useState<IShop[] | null>(null);
   const { shopState } = useContext(ShopStore);
 
-  useEffect(() => {
-    const getAllShops = () => {
-      let shopsRef = db.collection("shops");
-      shopsRef.get().then((querySnapshot) => {
+  const getShopsByQuery = useCallback((query: string) => {
+    let shopsRef = db.collection("shops");
+    shopsRef
+      .where("tags", "array-contains", query)
+      .get()
+      .then((querySnapshot) => {
         const result: IShop[] = [];
         querySnapshot.forEach((doc) => {
           const shopData = doc.data() as IShop;
@@ -40,32 +42,30 @@ function Shops() {
         const shuffledShops = randomizeShops(result);
         setShops(shuffledShops);
       });
-    };
+  }, []);
 
-    const getShopsByQuery = (query: string) => {
-      let shopsRef = db.collection("shops");
-      shopsRef
-        .where("tags", "array-contains", query)
-        .get()
-        .then((querySnapshot) => {
-          const result: IShop[] = [];
-          querySnapshot.forEach((doc) => {
-            const shopData = doc.data() as IShop;
-            const shopId = doc.id;
-            result.push({ ...shopData, id: shopId });
-          });
+  const getAllShops = useCallback(() => {
+    let shopsRef = db.collection("shops");
+    shopsRef.get().then((querySnapshot) => {
+      const result: IShop[] = [];
+      querySnapshot.forEach((doc) => {
+        const shopData = doc.data() as IShop;
+        const shopId = doc.id;
+        result.push({ ...shopData, id: shopId });
+      });
 
-          const shuffledShops = randomizeShops(result);
-          setShops(shuffledShops);
-        });
-    };
+      const shuffledShops = randomizeShops(result);
+      setShops(shuffledShops);
+    });
+  }, []);
 
+  useEffect(() => {
     if (shopState.query) {
       getShopsByQuery(shopState.query);
     } else {
       getAllShops();
     }
-  }, [shopState.query]);
+  }, [shopState.query, getAllShops, getShopsByQuery]);
 
   const randomizeShops = (shops: IShop[]) => {
     for (let i = shops.length - 1; i > 0; i--) {
@@ -88,5 +88,3 @@ function Shops() {
     </div>
   );
 }
-
-export default Shops;

@@ -2,7 +2,7 @@ import { FormEvent, useContext, useState } from "react";
 import { ShopStore } from "src/shop-store";
 import "./Search.scss";
 
-function Search() {
+export function Search() {
   const [query, setQuery] = useState("");
   const { shopDispatch } = useContext(ShopStore);
 
@@ -36,5 +36,3 @@ function Search() {
     </form>
   );
 }
-
-export default Search;

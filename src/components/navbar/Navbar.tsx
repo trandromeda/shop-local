@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
 
-function Navbar() {
+export function Navbar() {
   const [isMenuActive, setMenuActive] = useState(false);
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
@@ -40,5 +40,3 @@ function Navbar() {
     </nav>
   );
 }
-
-export default Navbar;
