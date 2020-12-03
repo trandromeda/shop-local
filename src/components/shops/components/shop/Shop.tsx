@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Shop.scss";
 
 interface IShop {
@@ -32,44 +33,66 @@ function Shop(props: Props) {
 
   return (
     <div className="card shop">
+      {/* <div className="card-image">
+        <figure className="image is-4by3">
+          <img
+            src="https://source.unsplash.com/collection/904967/800x600?sig={props.shop.id}"
+            alt="Placeholder"
+          />
+        </figure>
+      </div> */}
       <header className="card-header">
         <p
-          className="shop__title card-header-title is-centered"
+          className="shop__title card-header-title"
           onClick={handleSelectShop}
           title={`Click to visit ${props.shop.name}`}
         >
           {props.shop.name}
         </p>
+        <a href="#" className="card-header-icon" aria-label="more options">
+          <span className="icon">
+            <FontAwesomeIcon icon="angle-down" />
+          </span>
+        </a>
       </header>
       <div className="card-content">
         <div className="content">
+          {props.shop.tags[0]} in {props.shop.neighbourhood || "Toronto"}
           <p className="shop__desc">{props.shop.desc}</p>
           {props.shop.instagram && (
-            <p className="shop__instagram" onClick={handleSelectInstagram}>
-              Instagram: @{props.shop.instagram}
+            <p className="subtitle is-6" onClick={handleSelectInstagram}>
+              @{props.shop.instagram}
             </p>
           )}
-          <div className="shop__geo">
-            {props.shop.address && <p>Address: {props.shop.address}</p>}
-            {props.shop.neighbourhood && (
-              <p>Neighbourhood: {props.shop.neighbourhood}</p>
-            )}
-          </div>
         </div>
       </div>
       <footer className="card-footer shop__metadata">
-        {props.shop.hasDelivery && (
-          <p className="card-footer-item">
-            {props.shop.hasDelivery === "local" && (
-              <span className="metadata__local">Local</span>
-            )}{" "}
-            Delivery
-          </p>
-        )}
-        {props.shop.hasPickup && <p className="card-footer-item">Pickup</p>}
-        {props.shop.hasGiftCards && (
-          <p className="card-footer-item">Gift cards</p>
-        )}
+        <div className="card-footer-item">
+          {props.shop.hasDelivery && (
+            <span className="metadata__delivery">
+              {props.shop.hasDelivery === "local" && (
+                <span className="metadata__local">Local</span>
+              )}{" "}
+              <FontAwesomeIcon icon="truck" />
+            </span>
+          )}
+          {props.shop.hasPickup && (
+            <span className="metadata__pickup">
+              <FontAwesomeIcon icon="shopping-bag" />
+            </span>
+          )}
+          {props.shop.hasGiftCards && (
+            <span className="metadata__card">
+              <FontAwesomeIcon icon="gift" />
+            </span>
+          )}
+        </div>
+        <div className="card-footer-item">
+          <div className="shop__geo">
+            {props.shop.address && <span>{props.shop.address}</span>}
+            {!props.shop.address && <span>Online</span>}
+          </div>
+        </div>
       </footer>
     </div>
   );

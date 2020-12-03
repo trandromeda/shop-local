@@ -1,20 +1,18 @@
 $red: #c14434;
 
 .shop {
-  margin: 1em auto;
-  max-width: 750px;
-  // box-shadow: 1px 1px 4px 1px #dedede;
-  // border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  // max-width: 550px;
 }
 
 .shop__title {
-  padding-top: 0.5em;
   cursor: pointer;
+}
 
-  &:hover {
-    background: $red;
-    color: white;
-  }
+.shop .card-content {
+  flex-grow: 1;
 }
 
 .shop__desc {
@@ -29,12 +27,26 @@ $red: #c14434;
 }
 
 .shop__geo {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  text-align: center;
 }
 
 .shop__metadata {
+  span {
+    margin: 0 0.25em;
+  }
+
+  span.metadata__delivery path {
+    color: red;
+  }
+
+  span.metadata__pickup path {
+    color: green;
+  }
+
+  span.metadata__card path {
+    color: blue;
+  }
+
   .metadata__local {
     margin: 0 0.2em;
   }

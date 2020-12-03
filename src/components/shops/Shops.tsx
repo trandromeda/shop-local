@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ShopStore } from "src/shop-store";
 import fire from "src/firebase";
 
@@ -79,12 +80,27 @@ export function Shops() {
   return (
     <div>
       <Filter />
-      <p>Click on a business' name to visit their website.</p>
+
+      <div className="shops-instructions">
+        <p>Click on a business' name to visit their website.</p>
+        <span className="shops__icon">
+          <FontAwesomeIcon icon="truck" /> = delivery
+        </span>
+        <span className="shops__icon">
+          <FontAwesomeIcon icon="shopping-bag" /> = curbside pick up
+        </span>
+        <span className="shops__icon">
+          <FontAwesomeIcon icon="gift" /> = gift cards
+        </span>
+      </div>
+
       {!shops && <div className="loading">Loading...</div>}
-      {shops &&
-        shops.map((shop) => {
-          return <Shop key={shop.id} shop={shop} />;
-        })}
+      <div className="shops">
+        {shops &&
+          shops.map((shop) => {
+            return <Shop key={shop.id} shop={shop} />;
+          })}
+      </div>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import "./About.scss";
 
 export function About() {
   return (
-    <div className="content">
+    <div className="about content">
       <p>
         Rouge is intended to be a directory of local businesses, beginning in
         Toronto (where the creator resides). The future goal is to make it as

@@ -7,6 +7,7 @@ $navbar-burger-color: #fff;
 @import "~bulma/sass/utilities/_all.sass";
 @import "~bulma/sass/base/_all.sass";
 @import "~bulma/sass/form/_all.sass";
+@import "~bulma/sass/layout/_all.sass";
 
 @import "~bulma/sass/elements/content.sass";
 @import "~bulma/sass/elements/button.sass";
@@ -16,33 +17,6 @@ $navbar-burger-color: #fff;
 @import "~bulma/sass/components/card.sass";
 @import "~bulma/sass/components/tabs.sass";
 @import "~bulma/sass/components/navbar.sass";
-
-.App {
-  text-align: center;
-}
-
-.header {
-  padding: 1em;
-  margin-bottom: 1em;
-  background-color: $red;
-  color: white;
-
-  h1.title,
-  .subtitle {
-    color: white;
-  }
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 @keyframes App-logo-spin {
   from {
