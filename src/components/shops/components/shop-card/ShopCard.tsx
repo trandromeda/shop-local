@@ -1,22 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./ShopCard.scss";
-
-interface IShop {
-  id: string;
-  name: string;
-  tags: string[];
-  url?: string;
-  instagram?: string;
-  desc?: string;
-  address?: string;
-  neighbourhood?: string;
-  hasDelivery?: boolean | "local";
-  hasPickup?: boolean;
-  hasGiftCards?: boolean;
-}
+import { IShop } from "src/components/shops/shop.model";
 
 type Props = {
   shop: IShop;
+  onShowEdit: (shop: IShop) => void;
 };
 
 function ShopCard(props: Props) {
@@ -29,6 +17,10 @@ function ShopCard(props: Props) {
   const handleSelectInstagram = () => {
     const url = `https://instagram.com/${props.shop.instagram}`;
     if (url) window.open(url, "_blank");
+  };
+
+  const handleSelectEdit = () => {
+    props.onShowEdit(props.shop);
   };
 
   return (
@@ -49,11 +41,15 @@ function ShopCard(props: Props) {
         >
           {props.shop.name}
         </p>
-        <a href="#" className="card-header-icon" aria-label="more options">
+        <span
+          className="card-header-icon"
+          aria-label="more options"
+          onClick={handleSelectEdit}
+        >
           <span className="icon">
             <FontAwesomeIcon icon="angle-down" />
           </span>
-        </a>
+        </span>
       </header>
       <div className="card-content">
         <div className="content">

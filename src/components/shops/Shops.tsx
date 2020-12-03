@@ -3,28 +3,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ShopStore } from "src/shop-store";
 import fire from "src/firebase";
 
-import Shop from "./components/shop/ShopCard";
+import Shop from "./components/shop-card/ShopCard";
 import Filter from "./components/filter/Filter";
+import { IShop } from "./shop.model";
 
 import "./Shops.scss";
+import { ShopEdit } from "./components/edit/ShopEdit";
 
 const db = fire.firestore();
-interface IShop {
-  id: string;
-  name: string;
-  tags: string[];
-  url?: string;
-  instagram?: string;
-  desc?: string;
-  address?: string;
-  neighbourhood?: string;
-  hasDelivery?: boolean;
-  hasPickup?: boolean;
-  hasGiftCards?: boolean;
-}
 
 export function Shops() {
   const [shops, setShops] = useState<IShop[] | null>(null);
+  const [shopToEdit, setShopToEdit] = useState<IShop | undefined>(undefined);
   const { shopState } = useContext(ShopStore);
 
   const getShopsByQuery = useCallback((query: string) => {
@@ -77,6 +67,10 @@ export function Shops() {
     return shops;
   };
 
+  const handleEditShop = (shop: IShop) => {
+    setShopToEdit(shop);
+  };
+
   return (
     <div>
       <Filter />
@@ -105,10 +99,18 @@ export function Shops() {
         </div>
       )}
 
+      <ShopEdit shop={shopToEdit} onSetShopToEdit={setShopToEdit} />
+
       <div className="shops">
         {shops &&
           shops.map((shop) => {
-            return <Shop key={shop.id} shop={shop} />;
+            return (
+              <Shop
+                key={shop.id}
+                shop={shop}
+                onShowEdit={(shop: IShop) => handleEditShop(shop)}
+              />
+            );
           })}
       </div>
     </div>
