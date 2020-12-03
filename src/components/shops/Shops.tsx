@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ShopStore } from "src/shop-store";
 import fire from "src/firebase";
 
-import Shop from "./components/shop/Shop";
+import Shop from "./components/shop/ShopCard";
 import Filter from "./components/filter/Filter";
 
 import "./Shops.scss";
@@ -97,6 +97,14 @@ export function Shops() {
       </div>
 
       {!shops && <div className="loading">Loading...</div>}
+
+      {shops?.length === 0 && shopState.query && (
+        <div className="shops__no-results">
+          Sorry, there were no results for "{shopState.query}". Please try
+          another keyword.
+        </div>
+      )}
+
       <div className="shops">
         {shops &&
           shops.map((shop) => {
