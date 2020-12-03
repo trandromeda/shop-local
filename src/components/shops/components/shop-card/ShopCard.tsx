@@ -46,8 +46,8 @@ function ShopCard(props: Props) {
           aria-label="more options"
           onClick={handleSelectEdit}
         >
-          <span className="icon">
-            <FontAwesomeIcon icon="angle-down" />
+          <span className="icon shop__edit">
+            <FontAwesomeIcon icon="ellipsis-v" />
           </span>
         </span>
       </header>
@@ -56,7 +56,10 @@ function ShopCard(props: Props) {
           {props.shop.tags[0]} in {props.shop.neighbourhood || "Toronto"}
           <p className="shop__desc">{props.shop.desc}</p>
           {props.shop.instagram && (
-            <p className="subtitle is-6" onClick={handleSelectInstagram}>
+            <p
+              className="subtitle is-6 shop__instagram"
+              onClick={handleSelectInstagram}
+            >
               @{props.shop.instagram}
             </p>
           )}
@@ -66,9 +69,9 @@ function ShopCard(props: Props) {
         <div className="card-footer-item">
           {props.shop.hasDelivery && (
             <span className="metadata__delivery shops__icon delivery">
-              {props.shop.hasDelivery === "local" && (
+              {props.shop.isLocalDelivery && (
                 <span className="metadata__local">Local</span>
-              )}{" "}
+              )}
               <FontAwesomeIcon icon="truck" title="Offers delivery" />
             </span>
           )}

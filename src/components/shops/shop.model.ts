@@ -7,7 +7,8 @@ export interface IShop {
   desc?: string;
   address?: string;
   neighbourhood?: string;
-  hasDelivery?: boolean | "local";
+  hasDelivery?: boolean;
   hasPickup?: boolean;
   hasGiftCards?: boolean;
+  isLocalDelivery?: boolean;
 }
