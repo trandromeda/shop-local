@@ -19,5 +19,25 @@ nav {
   .navbar-item > a {
     color: #fff;
     text-decoration: underline;
+
+    @media only screen and (max-width: 1023px) {
+      color: #000;
+    }
+  }
+
+  .mobile-only {
+    form {
+      margin: 0.5em auto;
+    }
+
+    @media only screen and (min-width: 1024px) {
+      display: none;
+    }
+  }
+
+  .desktop-only {
+    @media only screen and (max-width: 1023px) {
+      display: none;
+    }
   }
 }

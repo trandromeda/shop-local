@@ -37,7 +37,6 @@ function App() {
               <Contact />
             </Route>
             <Route path="/">
-              <Search />
               <Shops />
             </Route>
           </Switch>

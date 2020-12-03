@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./Shop.scss";
+import "./ShopCard.scss";
 
 interface IShop {
   id: string;
@@ -19,7 +19,7 @@ type Props = {
   shop: IShop;
 };
 
-function Shop(props: Props) {
+function ShopCard(props: Props) {
   const handleSelectShop = () => {
     const url =
       props.shop.url || `https://instagram.com/${props.shop.instagram}`;
@@ -101,4 +101,4 @@ function Shop(props: Props) {
   );
 }
 
-export default Shop;
+export default ShopCard;
