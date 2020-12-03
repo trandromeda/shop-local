@@ -69,7 +69,7 @@ function Shop(props: Props) {
       <footer className="card-footer shop__metadata">
         <div className="card-footer-item">
           {props.shop.hasDelivery && (
-            <span className="metadata__delivery">
+            <span className="metadata__delivery shops__icon delivery">
               {props.shop.hasDelivery === "local" && (
                 <span className="metadata__local">Local</span>
               )}{" "}
@@ -77,12 +77,12 @@ function Shop(props: Props) {
             </span>
           )}
           {props.shop.hasPickup && (
-            <span className="metadata__pickup">
+            <span className="metadata__pickup shops__icon pickup">
               <FontAwesomeIcon icon="shopping-bag" />
             </span>
           )}
           {props.shop.hasGiftCards && (
-            <span className="metadata__card">
+            <span className="metadata__card shops__icon gifts">
               <FontAwesomeIcon icon="gift" />
             </span>
           )}

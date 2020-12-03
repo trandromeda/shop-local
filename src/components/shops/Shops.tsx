@@ -83,13 +83,13 @@ export function Shops() {
 
       <div className="shops-instructions">
         <p>Click on a business' name to visit their website.</p>
-        <span className="shops__icon">
+        <span className="shops__icon delivery">
           <FontAwesomeIcon icon="truck" /> = delivery
         </span>
-        <span className="shops__icon">
+        <span className="shops__icon pickup">
           <FontAwesomeIcon icon="shopping-bag" /> = curbside pick up
         </span>
-        <span className="shops__icon">
+        <span className="shops__icon gifts">
           <FontAwesomeIcon icon="gift" /> = gift cards
         </span>
       </div>

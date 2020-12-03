@@ -31,22 +31,6 @@ $red: #c14434;
 }
 
 .shop__metadata {
-  span {
-    margin: 0 0.25em;
-  }
-
-  span.metadata__delivery path {
-    color: red;
-  }
-
-  span.metadata__pickup path {
-    color: green;
-  }
-
-  span.metadata__card path {
-    color: blue;
-  }
-
   .metadata__local {
     margin: 0 0.2em;
   }
