@@ -6,15 +6,18 @@ nav.navbar {
   border-bottom: 3px solid $red;
 }
 
-.brand__logo {
-  padding: 0.5em 1em;
-}
+nav {
+  .brand__logo {
+    padding: 0.5em 1em;
+  }
 
-.title a,
-.subtitle {
-  color: #fff;
-}
+  .title a,
+  .subtitle {
+    color: #fff;
+  }
 
-.navbar-burger {
-  // color: #fff;
+  .navbar-item > a {
+    color: #fff;
+    text-decoration: underline;
+  }
 }
