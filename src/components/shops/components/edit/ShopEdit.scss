@@ -1,3 +1,31 @@
 .modal-card .close {
   cursor: pointer;
 }
+
+.modal-card .title-prefix {
+  font-size: 0.75em;
+}
+
+.modal-card-title {
+  @media only screen and (max-width: 1024px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.field.address--fullwidth {
+  width: 100%;
+}
+
+.field .control.edit__checkboxes {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    width: fit-content;
+  }
+
+  .checkbox input {
+    margin: 0.5em 0.5em 0 0;
+  }
+}
