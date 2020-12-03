@@ -7,6 +7,10 @@ nav.navbar {
 }
 
 nav {
+  .navbar-start {
+    flex: 1 0 auto;
+  }
+
   .brand__logo {
     padding: 0.5em 1em;
   }
