@@ -1,0 +1,37 @@
+$red: #c14434;
+
+.shop {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  // max-width: 550px;
+}
+
+.shop__title {
+  cursor: pointer;
+}
+
+.shop .card-content {
+  flex-grow: 1;
+}
+
+.shop__desc {
+  padding: 1em;
+}
+
+.shop__instagram {
+  cursor: pointer;
+  &:hover {
+    color: $red;
+  }
+}
+
+.shop__geo {
+  text-align: center;
+}
+
+.shop__metadata {
+  .metadata__local {
+    margin: 0 0.2em;
+  }
+}

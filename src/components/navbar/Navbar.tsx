@@ -1,8 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
 
-function Navbar() {
+import { Search } from "src/components";
+
+export function Navbar() {
   const [isMenuActive, setMenuActive] = useState(false);
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
@@ -25,8 +27,21 @@ function Navbar() {
           <span aria-hidden="true"></span>
         </a>
       </div>
+      <div className="mobile-only">
+        <Search />
+      </div>
       <div className={`navbar-menu ${isMenuActive ? "is-active" : ""}`}>
-        <div className="navbar-start"></div>
+        <div className="navbar-start">
+          <div className="navbar-item is-expanded desktop-only">
+            <Search />
+          </div>
+          <div className="navbar-item">
+            <Link to="/about">About</Link>
+          </div>
+          <div className="navbar-item">
+            <Link to="/contact">Contact</Link>
+          </div>
+        </div>
         <div className="navbar-end">
           <div className="navbar-item">
             <div className="buttons">
@@ -40,5 +55,3 @@ function Navbar() {
     </nav>
   );
 }
-
-export default Navbar;

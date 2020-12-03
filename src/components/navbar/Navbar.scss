@@ -1,0 +1,47 @@
+$red: #c14434;
+
+nav.navbar {
+  margin-bottom: 1em;
+  background-color: $red;
+  border-bottom: 3px solid $red;
+}
+
+nav {
+  .navbar-start {
+    flex: 1 0 auto;
+  }
+
+  .brand__logo {
+    padding: 0.5em 1em;
+  }
+
+  .title a,
+  .subtitle {
+    color: #fff;
+  }
+
+  .navbar-item > a {
+    color: #fff;
+    text-decoration: underline;
+
+    @media only screen and (max-width: 1023px) {
+      color: #000;
+    }
+  }
+
+  .mobile-only {
+    form {
+      margin: 0.5em auto;
+    }
+
+    @media only screen and (min-width: 1024px) {
+      display: none;
+    }
+  }
+
+  .desktop-only {
+    @media only screen and (max-width: 1023px) {
+      display: none;
+    }
+  }
+}

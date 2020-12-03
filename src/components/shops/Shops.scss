@@ -1,0 +1,43 @@
+@use "src/styles/colours";
+
+.loading {
+  padding: 2.5em;
+}
+
+.shops {
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+  grid-auto-columns: 1fr;
+  grid-gap: 1.5em;
+
+  @media only screen and (max-width: 425px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.shops-instructions {
+  text-align: center;
+}
+
+.shops__icon {
+  margin: 0 0.25em;
+
+  &.delivery path {
+    color: colours.$green;
+  }
+
+  &.pickup path {
+    color: colours.$purple;
+  }
+
+  &.gifts path {
+    color: colours.$turquoise;
+  }
+}
+
+.shops__no-results {
+  margin: 2em;
+  text-align: center;
+}

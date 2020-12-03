@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -7,13 +7,15 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import { ShopStoreProvider } from "./shop-store";
 
 import "./App.scss";
-import Search from "./search/Search";
-import Shops from "./shops/Shops";
-import Footer from "./footer/Footer";
-import About from "./about/About";
-import Navbar from "./navbar/Navbar";
-import Contribute from "./contribute/Contribute";
-import Contact from "./contact/Contact";
+import {
+  Search,
+  Shops,
+  Footer,
+  About,
+  Navbar,
+  Contribute,
+  Contact,
+} from "./components";
 
 library.add(fas);
 
@@ -35,7 +37,6 @@ function App() {
               <Contact />
             </Route>
             <Route path="/">
-              <Search />
               <Shops />
             </Route>
           </Switch>

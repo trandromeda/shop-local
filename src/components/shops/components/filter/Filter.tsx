@@ -27,9 +27,9 @@ const tabs = [
     query: "jewellery",
   },
   {
-    label: "Gifts",
-    icon: "gift",
-    query: "gifts",
+    label: "Books",
+    icon: "book",
+    query: "books",
   },
   {
     label: "Food",
