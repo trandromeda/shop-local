@@ -73,17 +73,23 @@ function Shop(props: Props) {
               {props.shop.hasDelivery === "local" && (
                 <span className="metadata__local">Local</span>
               )}{" "}
-              <FontAwesomeIcon icon="truck" />
+              <FontAwesomeIcon icon="truck" title="This shop offers delivery" />
             </span>
           )}
           {props.shop.hasPickup && (
             <span className="metadata__pickup shops__icon pickup">
-              <FontAwesomeIcon icon="shopping-bag" />
+              <FontAwesomeIcon
+                icon="shopping-bag"
+                title="This shop offers curbside pickup"
+              />
             </span>
           )}
           {props.shop.hasGiftCards && (
             <span className="metadata__card shops__icon gifts">
-              <FontAwesomeIcon icon="gift" />
+              <FontAwesomeIcon
+                icon="gift"
+                title="This shop offers gift cards"
+              />
             </span>
           )}
         </div>
