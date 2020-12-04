@@ -16,6 +16,7 @@ const db = fire.firestore();
 
 export function Shops() {
   const [shops, setShops] = useState<IShop[] | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [shopToEdit, setShopToEdit] = useState<IShop | undefined>(undefined);
   const { shopState } = useContext(ShopStore);
 
@@ -74,7 +75,7 @@ export function Shops() {
   };
 
   const handleSubmitForm = async (shop: IShop) => {
-    console.log(shop);
+    setIsSubmitting(true);
     Axios.post(
       "https://us-central1-shop-local-a6a08.cloudfunctions.net/sendMail?dest=webmaster.rougeapp@gmail.com",
       shop
@@ -82,9 +83,11 @@ export function Shops() {
       .then((res) => {
         console.log(res);
         setShopToEdit(undefined);
+        setIsSubmitting(false);
       })
       .catch((error) => {
         console.error(error);
+        setIsSubmitting(false);
       });
   };
 
@@ -118,6 +121,7 @@ export function Shops() {
 
       <ShopEdit
         shop={shopToEdit}
+        isSubmitting={isSubmitting}
         onSetShopToEdit={setShopToEdit}
         onSubmitForm={handleSubmitForm}
       />
