@@ -26,20 +26,22 @@ function App() {
         <div className="App">
           <Navbar />
 
-          <Switch>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/contribute">
-              <Contribute />
-            </Route>
-            <Route path="/contact">
-              <Contact />
-            </Route>
-            <Route path="/">
-              <Shops />
-            </Route>
-          </Switch>
+          <div className="view">
+            <Switch>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/contribute">
+                <Contribute />
+              </Route>
+              <Route path="/contact">
+                <Contact />
+              </Route>
+              <Route path="/">
+                <Shops />
+              </Route>
+            </Switch>
+          </div>
           <Footer />
         </div>
       </ShopStoreProvider>

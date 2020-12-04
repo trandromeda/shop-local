@@ -20,6 +20,15 @@ $navbar-burger-color: #fff;
 @import "~bulma/sass/components/modal.sass";
 @import "~bulma/sass/components/message.sass";
 
+.App {
+  display: flex;
+  flex-direction: column;
+
+  .view {
+    flex: 1 1 auto;
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
