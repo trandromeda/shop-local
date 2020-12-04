@@ -60,7 +60,7 @@ export function ShopForm(props: IProps) {
           <input
             className="input"
             type="text"
-            placeholder="please enter keywords"
+            placeholder="please enter some keywords, separated by commas"
             name="tags"
             value={props.shop.tags}
             onChange={props.onUpdateShopForm}
@@ -108,7 +108,7 @@ export function ShopForm(props: IProps) {
         <div className="control">
           <textarea
             className="textarea"
-            placeholder="Please provide a description of the business"
+            placeholder="please provide a description of the business"
             name="desc"
             value={props.shop.desc || ""}
             onChange={props.onUpdateShopForm}
@@ -148,6 +148,20 @@ export function ShopForm(props: IProps) {
             />
             Offers Gift cards?
           </label>
+        </div>
+      </div>
+
+      <div className="field">
+        <label className="label">Any other notes?</label>
+        <div className="control">
+          <input
+            className="input"
+            type="text"
+            name="misc"
+            placeholder="feel free to leave an email if you'd like a reply"
+            value={props.shop.misc || ""}
+            onChange={props.onUpdateShopForm}
+          />
         </div>
       </div>
     </div>

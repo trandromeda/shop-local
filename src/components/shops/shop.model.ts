@@ -1,5 +1,5 @@
 export interface IShop {
-  id: string;
+  id?: string;
   name: string;
   tags: string[];
   url?: string;
@@ -11,4 +11,5 @@ export interface IShop {
   hasPickup?: boolean;
   hasGiftCards?: boolean;
   isLocalDelivery?: boolean;
+  misc?: string;
 }
