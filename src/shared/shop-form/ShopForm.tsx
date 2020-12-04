@@ -65,6 +65,7 @@ export function ShopForm(props: IProps) {
             value={props.shop.tags}
             onChange={props.onUpdateShopForm}
           />
+          <p className="help is-info">e.g. baby,kids,clothing,maternity</p>
         </div>
       </div>
 
@@ -86,7 +87,16 @@ export function ShopForm(props: IProps) {
 
           <div className="field">
             <div className="control">
-              <div className="select">
+              <input
+                className="input"
+                type="text"
+                placeholder="neighbourhood"
+                name="neighbourhood"
+                value={props.shop.neighbourhood || ""}
+                onChange={props.onUpdateShopForm}
+              />
+              <p className="help is-info">e.g. Roncesvalles, The Annex</p>
+              {/* <div className="select">
                 <select
                   name="neighbourhood"
                   value={props.shop.neighbourhood || "Online"}
@@ -97,7 +107,7 @@ export function ShopForm(props: IProps) {
                   <option>The Junction</option>
                 </select>
               </div>
-              <p className="help is-info">Select a neighbourhood</p>
+              <p className="help is-info">Select a neighbourhood</p> */}
             </div>
           </div>
         </div>
