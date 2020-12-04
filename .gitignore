@@ -26,3 +26,6 @@ yarn-error.log*
 .vscode
 .eslintcache
 .firebase
+/functions/.env
+/functions/database-debug.log
+/functions/ui-debug.log
