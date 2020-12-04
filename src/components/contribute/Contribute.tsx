@@ -63,29 +63,6 @@ export function Contribute() {
 
   return (
     <div>
-      {isSubmitted && (
-        <div className="contribute message-container">
-          <article className="message is-success is-centered">
-            <div className="message-body">
-              Thank you so much for your submission! I review all shops manually
-              before adding them to the site. You can expect an update within 24
-              hours.
-            </div>
-          </article>
-        </div>
-      )}
-
-      {hasError && (
-        <div className="contribute message-container">
-          <article className="message is-danger is-centered">
-            <div className="message-body">
-              Sorry, something went wrong with your submission. Please try
-              again, or get in touch with me using the Contact link below.
-            </div>
-          </article>
-        </div>
-      )}
-
       <div className="card contribute">
         <header className="card-header">
           <p className="card-header-title title is-4">
@@ -110,6 +87,28 @@ export function Contribute() {
           </div>
         </footer>
       </div>
+      {isSubmitted && (
+        <div className="contribute message-container">
+          <article className="message is-success is-centered">
+            <div className="message-body">
+              Thank you so much for your submission! I review all shops manually
+              before adding them to the site. You can expect an update within 24
+              hours.
+            </div>
+          </article>
+        </div>
+      )}
+
+      {hasError && (
+        <div className="contribute message-container">
+          <article className="message is-danger is-centered">
+            <div className="message-body">
+              Sorry, something went wrong with your submission. Please try
+              again, or get in touch with me using the Contact link below.
+            </div>
+          </article>
+        </div>
+      )}
     </div>
   );
 }
