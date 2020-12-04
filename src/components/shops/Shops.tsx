@@ -75,7 +75,7 @@ export function Shops() {
     setShopToEdit(undefined);
 
     const response = await fetch(
-      "https://shop-local-a6a08/us-central1/sendMail?dest=webmaster.rougeapp@gmail.com",
+      "https://us-central1-shop-local-a6a08.cloudfunctions.net/sendMail?dest=webmaster.rougeapp@gmail.com",
       {
         method: "POST",
         headers: {
