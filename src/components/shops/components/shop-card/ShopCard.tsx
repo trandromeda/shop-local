@@ -47,7 +47,10 @@ function ShopCard(props: Props) {
           onClick={handleSelectEdit}
         >
           <span className="icon shop__edit">
-            <FontAwesomeIcon icon="ellipsis-v" />
+            <FontAwesomeIcon
+              icon="ellipsis-v"
+              title="Click to suggest changes to this shop"
+            />
           </span>
         </span>
       </header>

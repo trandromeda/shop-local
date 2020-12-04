@@ -1,5 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Axios from "axios";
+
 import { ShopStore } from "src/shop-store";
 import fire from "src/firebase";
 
@@ -72,24 +74,18 @@ export function Shops() {
   };
 
   const handleSubmitForm = async (shop: IShop) => {
-    setShopToEdit(undefined);
-
-    const response = await fetch(
+    console.log(shop);
+    Axios.post(
       "https://us-central1-shop-local-a6a08.cloudfunctions.net/sendMail?dest=webmaster.rougeapp@gmail.com",
-      {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(shop),
-      }
-    );
-    const resData = await response.json();
-    if (resData.status === "success") {
-      console.log("Success");
-    } else if (resData.status === "fail") {
-      console.log(resData);
-    }
+      shop
+    )
+      .then((res) => {
+        console.log(res);
+        setShopToEdit(undefined);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (

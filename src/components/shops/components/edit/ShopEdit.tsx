@@ -163,7 +163,7 @@ export function ShopEdit(props: IProps) {
                   className="textarea"
                   placeholder="Please provide a description of the business"
                   name="desc"
-                  value={shopForm.desc}
+                  value={shopForm.desc || ""}
                   onChange={updateShopForm}
                 ></textarea>
               </div>
