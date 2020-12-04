@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Axios from "axios";
+import { toast as superToast } from "bulma-toast";
 
 import { ShopStore } from "src/shop-store";
 import fire from "src/firebase";
@@ -81,12 +82,29 @@ export function Shops() {
       shop
     )
       .then((res) => {
-        console.log(res);
+        superToast({
+          message:
+            "Thank you for your submission! You can expect an update within 24 hours",
+          type: "is-success",
+          position: "center",
+          dismissible: false,
+          duration: 5000,
+          animate: { in: "fadeIn", out: "fadeOut" },
+        });
         setShopToEdit(undefined);
         setIsSubmitting(false);
       })
       .catch((error) => {
         console.error(error);
+        superToast({
+          message:
+            "Sorry, something went wrong. Please try again or contact me using the link at the bottom",
+          type: "is-danger",
+          position: "center",
+          dismissible: false,
+          duration: 5000,
+          animate: { in: "fadeIn", out: "fadeOut" },
+        });
         setIsSubmitting(false);
       });
   };
@@ -102,7 +120,7 @@ export function Shops() {
             <FontAwesomeIcon icon="truck" /> = delivery
           </span>
           <span className="shops__icon pickup">
-            <FontAwesomeIcon icon="shopping-bag" /> = curbside pick up
+            <FontAwesomeIcon icon="shopping-bag" /> = curbside pickup
           </span>
           <span className="shops__icon gifts">
             <FontAwesomeIcon icon="gift" /> = gift cards

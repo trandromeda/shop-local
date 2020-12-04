@@ -24,7 +24,7 @@ export function ShopForm(props: IProps) {
       </div>
 
       <div className="field">
-        <label className="label">Online Presence</label>
+        <label className="label">Online presence</label>
         <div className="field-body">
           <div className="field">
             <div className="control is-expanded">
@@ -126,7 +126,7 @@ export function ShopForm(props: IProps) {
               checked={!!props.shop.hasDelivery}
               onChange={props.onUpdateShopForm}
             />
-            Offers Delivery?
+            Offers delivery?
           </label>
           <label className="checkbox">
             <input
@@ -136,7 +136,7 @@ export function ShopForm(props: IProps) {
               checked={!!props.shop.hasPickup}
               onChange={props.onUpdateShopForm}
             />
-            Offers Curbside Pickup?
+            Offers curbside pickup?
           </label>
           <label className="checkbox">
             <input
@@ -146,7 +146,7 @@ export function ShopForm(props: IProps) {
               checked={!!props.shop.hasGiftCards}
               onChange={props.onUpdateShopForm}
             />
-            Offers Gift cards?
+            Offers gift cards?
           </label>
         </div>
       </div>
