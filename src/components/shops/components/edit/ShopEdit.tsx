@@ -6,6 +6,7 @@ import "./ShopEdit.scss";
 interface IProps {
   shop?: IShop;
   onSetShopToEdit: (shop: undefined) => void;
+  onSubmitForm: (shop: IShop) => void;
 }
 
 export function ShopEdit(props: IProps) {
@@ -27,7 +28,7 @@ export function ShopEdit(props: IProps) {
       value = stringToArray;
     }
 
-    const updatedForm: { [path in keyof IShop]: any | any[] } = {
+    const updatedForm: { [path in keyof IShop]: any } = {
       id: shopForm?.id,
       name: shopForm?.name,
       tags: shopForm?.tags,
@@ -204,7 +205,12 @@ export function ShopEdit(props: IProps) {
             </div>
           </section>
           <footer className="modal-card-foot">
-            <button className="button is-success">Submit</button>
+            <button
+              className="button is-success"
+              onClick={() => props.onSubmitForm(shopForm)}
+            >
+              Submit
+            </button>
             <button
               className="button"
               onClick={() => props.onSetShopToEdit(undefined)}

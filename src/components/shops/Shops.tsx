@@ -71,6 +71,27 @@ export function Shops() {
     setShopToEdit(shop);
   };
 
+  const handleSubmitForm = async (shop: IShop) => {
+    setShopToEdit(undefined);
+
+    const response = await fetch(
+      "https://shop-local-a6a08/us-central1/sendMail?dest=webmaster.rougeapp@gmail.com",
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(shop),
+      }
+    );
+    const resData = await response.json();
+    if (resData.status === "success") {
+      console.log("Success");
+    } else if (resData.status === "fail") {
+      console.log(resData);
+    }
+  };
+
   return (
     <div>
       <Filter />
@@ -99,7 +120,11 @@ export function Shops() {
         </div>
       )}
 
-      <ShopEdit shop={shopToEdit} onSetShopToEdit={setShopToEdit} />
+      <ShopEdit
+        shop={shopToEdit}
+        onSetShopToEdit={setShopToEdit}
+        onSubmitForm={handleSubmitForm}
+      />
 
       <div className="shops">
         {shops &&
