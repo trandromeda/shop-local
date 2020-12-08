@@ -1,30 +1,24 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Axios from "axios";
+import { toast as superToast } from "bulma-toast";
+
 import { ShopStore } from "src/shop-store";
 import fire from "src/firebase";
 
-import Shop from "./components/shop/ShopCard";
+import Shop from "./components/shop-card/ShopCard";
 import Filter from "./components/filter/Filter";
+import { IShop } from "./shop.model";
 
 import "./Shops.scss";
+import { ShopEdit } from "./components/edit/ShopEdit";
 
 const db = fire.firestore();
-interface IShop {
-  id: string;
-  name: string;
-  tags: string[];
-  url?: string;
-  instagram?: string;
-  desc?: string;
-  address?: string;
-  neighbourhood?: string;
-  hasDelivery?: boolean;
-  hasPickup?: boolean;
-  hasGiftCards?: boolean;
-}
 
 export function Shops() {
   const [shops, setShops] = useState<IShop[] | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [shopToEdit, setShopToEdit] = useState<IShop | undefined>(undefined);
   const { shopState } = useContext(ShopStore);
 
   const getShopsByQuery = useCallback((query: string) => {
@@ -77,6 +71,44 @@ export function Shops() {
     return shops;
   };
 
+  const handleEditShop = (shop: IShop) => {
+    setShopToEdit(shop);
+  };
+
+  const handleSubmitForm = async (shop: IShop) => {
+    setIsSubmitting(true);
+    Axios.post(
+      "https://us-central1-shop-local-a6a08.cloudfunctions.net/sendMail?dest=webmaster.rougeapp@gmail.com",
+      shop
+    )
+      .then((res) => {
+        superToast({
+          message:
+            "Thank you for your submission! You can expect an update within 24 hours",
+          type: "is-success",
+          position: "center",
+          dismissible: false,
+          duration: 5000,
+          animate: { in: "fadeIn", out: "fadeOut" },
+        });
+        setShopToEdit(undefined);
+        setIsSubmitting(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        superToast({
+          message:
+            "Sorry, something went wrong. Please try again or contact me using the link at the bottom",
+          type: "is-danger",
+          position: "center",
+          dismissible: false,
+          duration: 5000,
+          animate: { in: "fadeIn", out: "fadeOut" },
+        });
+        setIsSubmitting(false);
+      });
+  };
+
   return (
     <div>
       <Filter />
@@ -88,7 +120,7 @@ export function Shops() {
             <FontAwesomeIcon icon="truck" /> = delivery
           </span>
           <span className="shops__icon pickup">
-            <FontAwesomeIcon icon="shopping-bag" /> = curbside pick up
+            <FontAwesomeIcon icon="shopping-bag" /> = curbside pickup
           </span>
           <span className="shops__icon gifts">
             <FontAwesomeIcon icon="gift" /> = gift cards
@@ -105,10 +137,23 @@ export function Shops() {
         </div>
       )}
 
+      <ShopEdit
+        shop={shopToEdit}
+        isSubmitting={isSubmitting}
+        onSetShopToEdit={setShopToEdit}
+        onSubmitForm={handleSubmitForm}
+      />
+
       <div className="shops">
         {shops &&
           shops.map((shop) => {
-            return <Shop key={shop.id} shop={shop} />;
+            return (
+              <Shop
+                key={shop.id}
+                shop={shop}
+                onShowEdit={(shop: IShop) => handleEditShop(shop)}
+              />
+            );
           })}
       </div>
     </div>

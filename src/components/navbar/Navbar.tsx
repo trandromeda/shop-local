@@ -45,7 +45,11 @@ export function Navbar() {
         <div className="navbar-end">
           <div className="navbar-item">
             <div className="buttons">
-              <Link to="/contribute" className="button is-white">
+              <Link
+                to="/contribute"
+                className="button button--contribute"
+                role="button"
+              >
                 Add shop
               </Link>
             </div>

@@ -1,9 +1,9 @@
-$red: #c14434;
+@use 'src/styles/colours';
 
 nav.navbar {
   margin-bottom: 1em;
-  background-color: $red;
-  border-bottom: 3px solid $red;
+  background-color: colours.$red;
+  border-bottom: 3px solid colours.$red;
 }
 
 nav {
@@ -20,12 +20,25 @@ nav {
     color: #fff;
   }
 
+  .navbar-item {
+    text-align: center;
+  }
+
   .navbar-item > a {
     color: #fff;
     text-decoration: underline;
 
     @media only screen and (max-width: 1023px) {
       color: #000;
+    }
+  }
+
+  @media only screen and (max-width: 1023px) {
+    .button.button--contribute {
+      margin: auto;
+      color: #fff;
+      border: 1px solid colours.$turquoise;
+      background-color: colours.$turquoise;
     }
   }
 
