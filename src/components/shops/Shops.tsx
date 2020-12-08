@@ -111,6 +111,21 @@ export function Shops() {
 
   return (
     <div>
+      <div className="contribute message-container">
+        <article className="message is-info is-centered">
+          <div className="message-body">
+            Welcome! I recently discovered another Toronto-made app called{" "}
+            <span>
+              <a href="https://www.nishe.shop/" target="_blank">
+                Nishe
+              </a>
+            </span>
+            , which does what Rouge does but is several months ahead in
+            development. While I think about what to do with this app, I
+            encourage you to check them out to support local businesses :)
+          </div>
+        </article>
+      </div>
       <Filter />
 
       <div className="shops-instructions">
